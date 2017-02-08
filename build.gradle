@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'boxio.BoxIO'
+version = '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Box IO', 	'Implementation-Version': version, 	'Main-Class': mainClassName
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+dependencies {
+    compile 'com.box:box-java-sdk:2.1.1'
+}
+
+buildscript {
+    repositories {
+        flatDir dirs: '../proguard5.3.2/lib'
+    }
+    dependencies {
+        classpath ':proguard'
+    }
+}
+
+task proguard(type: proguard.gradle.ProGuardTask) {
+    injars  'build/libs/' + project.name + '-' + version + '.jar'
+    outjars 'build/libs/' + project.name + '.jar'
+
+    libraryjars "${System.getProperty('java.home')}/lib/rt.jar"
+}
