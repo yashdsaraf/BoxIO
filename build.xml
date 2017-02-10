@@ -19,7 +19,7 @@
             <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.52/b8ffac2bbc6626f86909589c8cc63637cc936504/bcpkix-jdk15on-1.52.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/org.bitbucket.b_c/jose4j/0.4.4/82deffa5cab3871084b47c24b467745c881996f0/jose4j-0.4.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.6/562424e36df3d2327e8e9301a76027fca17d54ea/slf4j-api-1.7.6.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/build/slf4j-nop-1.7.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/slf4j-nop-1.7.3.jar"/>
         </jar>
     </target>
     <target name="obfuscate" depends="create_run_jar">
