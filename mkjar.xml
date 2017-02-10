@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="obfuscate" name="Create Runnable Jar for Project BoxIO">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/home/rorschack/Workspace/Eclipse"/>
+    <property name="dir.jarfile" value="${dir.buildfile}/build/libs"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/BoxIO.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="boxio.BoxIO"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/com.box/box-java-sdk/2.1.1/f6f998318f078a0e3115c4b2bdae5b69e52d8e9e/box-java-sdk-2.1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/com.eclipsesource.minimal-json/minimal-json/0.9.1/9b409b88e38b11519ce3334cbcdda361462ac72d/minimal-json-0.9.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk15on/1.52/88a941faf9819d371e3174b5ed56a3f3f7d73269/bcprov-jdk15on-1.52.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.52/b8ffac2bbc6626f86909589c8cc63637cc936504/bcpkix-jdk15on-1.52.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/org.bitbucket.b_c/jose4j/0.4.4/82deffa5cab3871084b47c24b467745c881996f0/jose4j-0.4.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/rorschack/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.6/562424e36df3d2327e8e9301a76027fca17d54ea/slf4j-api-1.7.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/build/slf4j-nop-1.7.3.jar"/>
+        </jar>
+    </target>
+    <target name="obfuscate" depends="create_run_jar">
+        <!-- <taskdef resource="${dir.buildfile}/src/proguard/ant/task.properties" -->
+            <!-- classpath="${dir.buildfile}/lib/proguard.jar" /> -->
+        <taskdef name="proguard" classname="proguard.ant.ProGuardTask" classpath="${dir.buildfile}/lib/proguard.jar"/>
+
+        <proguard configuration="BoxIO.pro" />
+
+    </target>
+</project>
