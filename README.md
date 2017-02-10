@@ -1,11 +1,11 @@
-# BoxIO
+# BoxIO `v1.0.0`
 
 ###Use your Box account as a named pipe (FIFO)
 
 ####BUILD
 1. Clone this repo
 2. Run `ant` in the cloned repo directory
-3. The built jar file should be at *build/libs/BoxIO-<version>.jar*
+3. The built jar file should be at *build/libs/BoxIO-(version).jar*
 
 ####USAGE
 BoxIO can be used in 2 scenarios
