@@ -14,13 +14,14 @@ BoxIO can be used in 2 scenarios
 
 #####LISTEN
 `java -jar BoxIO.jar <properties file> listen <file count>`
-* <properties file> - File consisting of the necessary keys
-* <file count> - How many file to download before quitting
+* properties file - File consisting of the necessary keys
+* file count - Number of files to downloads  before quitting
 
 #####UPLOAD
 `java -jar BoxIO.jar <properties file> upload <file 1> <file 2> ....<file N>`
-* <properties file> - File consisting of the necessary keys
-* <file *> - Files to be uploaded
+* properties file - File consisting of the necessary keys
+* file * - Files to be uploaded
+
 _Note: When running multiple instances of BoxIO at once, use separate jar files to avoid ConcurrentModificationException_
 
 *Keys required in the properties file are*
