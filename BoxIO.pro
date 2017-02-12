@@ -1,5 +1,5 @@
 -injars build/libs/BoxIO.jar
--outjars build/libs/BoxIO-1.0.0.jar
+-outjars build/libs/BoxIO-1.0.1.jar
 
 -libraryjars /usr/lib/jvm/java-8-jdk/jre/lib/rt.jar
 -libraryjars /usr/lib/jvm/java-8-jdk/jre/lib/jce.jar

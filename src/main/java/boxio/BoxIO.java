@@ -25,6 +25,7 @@ import com.box.sdk.EncryptionAlgorithm;
 import com.box.sdk.IAccessTokenCache;
 import com.box.sdk.InMemoryLRUAccessTokenCache;
 import com.box.sdk.JWTEncryptionPreferences;
+import com.box.sdk.ProgressListener;
 
 public class BoxIO {
 
@@ -103,10 +104,18 @@ public class BoxIO {
 					for (BoxItem.Info itemInfo : boxFolder) {
 						BoxFile file = new BoxFile(api, itemInfo.getID());
 						try (FileOutputStream stream = new FileOutputStream(itemInfo.getName())) {
-							System.out.println("Downloading file " + itemInfo.getName());
-							file.download(stream);
+							System.out.println("\n" + ++counter + ". Downloading file " + itemInfo.getName());
+							ProgressBar bar = new ProgressBar();
+							file.download(stream, new ProgressListener() {
+
+								@Override
+								public void onProgressChanged(long numBytes, long totalBytes) {
+									int done = (int) numBytes / 1024;
+									int total = (int) totalBytes / 1024;
+									bar.update(done, total);
+								}
+							});
 							file.delete();
-							counter++;
 						} catch (IOException e) {
 							e.printStackTrace();
 							return false;
@@ -168,9 +177,9 @@ public class BoxIO {
 		Future<Boolean> future = exService.submit(box);
 		try {
 			if (!future.get()) {
-				System.out.println("Failed!");
+				System.err.println("\nFailed!");
 			} else {
-				System.out.println("Success!");
+				System.out.println("\nSuccess!");
 			}
 		} catch (ExecutionException | InterruptedException e) {
 			e.printStackTrace(System.err);
