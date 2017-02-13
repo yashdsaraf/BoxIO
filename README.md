@@ -1,4 +1,4 @@
-# BoxIO `v1.0.0`
+# BoxIO `v1.0.1`
 
 ###Use your Box account as a named pipe (FIFO)
 
