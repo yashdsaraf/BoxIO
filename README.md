@@ -1,23 +1,23 @@
 # BoxIO `v1.0.1`
 
-###Use your Box account as a named pipe (FIFO)
+### Use your Box account as a named pipe (FIFO)
 
-####BUILD
+#### BUILD
 1. Clone this repo
 2. Run `ant` in the cloned repo directory
 3. The built jar file should be at *build/libs/BoxIO-(version).jar*
 
-####USAGE
+#### USAGE
 BoxIO can be used in 2 scenarios
  * LISTEN
  * UPLOAD
 
-#####LISTEN
+##### LISTEN
 `java -jar BoxIO.jar <properties file> listen <file count>`
 * properties file - File consisting of the necessary keys
 * file count - Number of files to downloads  before quitting
 
-#####UPLOAD
+##### UPLOAD
 `java -jar BoxIO.jar <properties file> upload <file 1> <file 2> ....<file N>`
 * properties file - File consisting of the necessary keys
 * file * - Files to be uploaded
